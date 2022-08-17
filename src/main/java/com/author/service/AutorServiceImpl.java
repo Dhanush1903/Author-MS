@@ -1,6 +1,6 @@
 package com.author.service;
 
-import java.awt.print.Book;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.author.entity.Books;
+import com.author.exception.ResourceNotFoundException;
 @Service
 public class AutorServiceImpl implements IAuthorService {
 	@Autowired
@@ -39,4 +40,33 @@ public class AutorServiceImpl implements IAuthorService {
 		
 	}
 
+	@Override
+	public void deleteallBooks() {
+		authorRepository.deleteAll();
+		
+	}
+
+	@Override
+	public Books updateAuthor(Books book, Integer id) {
+		// TODO Auto-generated method stub
+		Books existingBook = authorRepository.findById(id).orElseThrow(
+				()-> new ResourceNotFoundException("Employee", "id", id));
+				
+		existingBook.setAuthorUserName(book.getAuthorUserName());;
+		existingBook.setActive(book.getActive());
+		existingBook.setCategory(book.getCategory());
+		existingBook.setContent(book.getContent());
+		existingBook.setImage(book.getImage());
+		existingBook.setPrice(book.getPrice());
+		existingBook.setPublisher(book.getPublisher());
+				
+				//the details are updated and then saving the updated value
+		authorRepository.save(existingBook);
+		return existingBook;
+	}
 }
+
+	
+	
+		
+

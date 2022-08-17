@@ -16,8 +16,9 @@ public class Books {
 		private String image;
 		private long price;
 		private String publisher;
-		private String active;
+		private Boolean active;
 		private String content;
+		private String authorUserName;
 		public Integer getId() {
 			return id;
 		}
@@ -54,22 +55,26 @@ public class Books {
 		public void setPublisher(String publisher) {
 			this.publisher = publisher;
 		}
-		public String getActive() {
+		public Boolean getActive() {
 			return active;
 		}
-		public void setActive(String active) {
+		public void setActive(Boolean active) {
 			this.active = active;
 		}
-		
-		
 		public String getContent() {
 			return content;
 		}
 		public void setContent(String content) {
 			this.content = content;
 		}
+		public String getAuthorUserName() {
+			return authorUserName;
+		}
+		public void setAuthorUserName(String authorUserName) {
+			this.authorUserName = authorUserName;
+		}
 		public Books(Integer id, String title, String category, String image, long price, String publisher,
-				String active, String content) {
+				Boolean active, String content, String authorUserName) {
 			super();
 			this.id = id;
 			this.title = title;
@@ -79,12 +84,11 @@ public class Books {
 			this.publisher = publisher;
 			this.active = active;
 			this.content = content;
+			this.authorUserName = authorUserName;
 		}
 		public Books() {
 			super();
 		}
 		
 		
-		
-
 }

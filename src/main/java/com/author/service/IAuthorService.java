@@ -15,4 +15,8 @@ public interface IAuthorService {
 	public Optional<Books> getBook(Integer id);
 
 	void deleteBook(Integer id);
+
+	void deleteallBooks();
+
+	Books updateAuthor(Books book, Integer id);
 }
