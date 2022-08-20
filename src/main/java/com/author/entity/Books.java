@@ -1,15 +1,11 @@
 package com.author.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-@Entity
+
+
+
 public class Books {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 		private Integer id;
 		private String title;
 		private String category;
@@ -19,6 +15,7 @@ public class Books {
 		private Boolean active;
 		private String content;
 		private String authorUserName;
+		private Integer aId;
 		public Integer getId() {
 			return id;
 		}
@@ -73,8 +70,14 @@ public class Books {
 		public void setAuthorUserName(String authorUserName) {
 			this.authorUserName = authorUserName;
 		}
+		public Integer getaId() {
+			return aId;
+		}
+		public void setaId(Integer aId) {
+			this.aId = aId;
+		}
 		public Books(Integer id, String title, String category, String image, long price, String publisher,
-				Boolean active, String content, String authorUserName) {
+				Boolean active, String content, String authorUserName, Integer aId) {
 			super();
 			this.id = id;
 			this.title = title;
@@ -85,10 +88,18 @@ public class Books {
 			this.active = active;
 			this.content = content;
 			this.authorUserName = authorUserName;
+			this.aId = aId;
 		}
 		public Books() {
 			super();
 		}
+		@Override
+		public String toString() {
+			return "Books [id=" + id + ", title=" + title + ", category=" + category + ", image=" + image + ", price="
+					+ price + ", publisher=" + publisher + ", active=" + active + ", content=" + content
+					+ ", authorUserName=" + authorUserName + ", aId=" + aId + "]";
+		}
+		
 		
 		
 }
