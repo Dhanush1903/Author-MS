@@ -44,7 +44,7 @@ public class AuthorController {
 		
 		//http://localhost:8083/getbook/1
 		
-		Books books = this.restTemplate.getForObject("http://localhost:8083/getbookbyaId/"+aId ,Books.class);
+		List<Books> books = this.restTemplate.getForObject("http://localhost:8083/getbookbyaId/"+aId ,List.class);
 	
 		
 		AuthorDTO authorDTO= new AuthorDTO();
@@ -55,7 +55,6 @@ public class AuthorController {
 		System.out.println(books);
 		return authorDTO;
 	}
-//	comment
 	
 	
 //	@GetMapping("/allBooks")

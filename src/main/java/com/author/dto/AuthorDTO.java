@@ -1,5 +1,7 @@
 package com.author.dto;
 
+import java.util.List;
+
 import com.author.entity.Books;
 
 public class AuthorDTO {
@@ -7,7 +9,7 @@ public class AuthorDTO {
 	private String authorName;
 	private String password;
 
-	private Books books; 
+	private List<Books> books; 
 
 	public Integer getaId() {
 		return aId;
@@ -33,11 +35,11 @@ public class AuthorDTO {
 		this.password = password;
 	}
 
-	public Books getBooks() {
+	public List<Books> getBooks() {
 		return books;
 	}
 
-	public void setBooks(Books books) {
+	public void setBooks(List<Books> books) {
 		this.books = books;
 	}
 
