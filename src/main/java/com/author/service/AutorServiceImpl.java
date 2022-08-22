@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.author.dto.AuthorDTO;
 import com.author.entity.Author;
 
 import com.author.exception.ResourceNotFoundException;
@@ -28,6 +29,18 @@ public class AutorServiceImpl implements IAuthorService {
 		// TODO Auto-generated method stub
 	Optional<Author> author=	authorRepository.findById(aId);
 		return author.get();
+	}
+
+	@Override
+	public boolean login(AuthorDTO authorDTO) {
+		
+		authorDTO.getaId(); authorDTO.getPassword();
+		
+		Author author = authorRepository.findById(authorDTO.getaId()).get();
+		if(author!= null && author.getPassword().equals(authorDTO.getPassword())) {
+			return true;
+		}
+		return false;
 	}
 
 //	@Override

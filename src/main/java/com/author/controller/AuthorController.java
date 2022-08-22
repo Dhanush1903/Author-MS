@@ -29,13 +29,22 @@ public class AuthorController {
 	private RestTemplate restTemplate;
 	
 	
-	
+//	create a new Author
 	@PostMapping("/author")
 	Integer createAuthor(@RequestBody Author author) {
 		Integer id= authorService.saveAuthor(author);
 		System.out.println(id);
 		return id;
 	}
+	
+//	Login
+	
+@PostMapping("/login")
+public boolean login(@RequestBody AuthorDTO authorDTO) {
+	authorDTO.getaId();authorDTO.getPassword();
+	return authorService.login(authorDTO);
+	
+}
 	
 	
 	@GetMapping("/{aId}")
@@ -57,12 +66,7 @@ public class AuthorController {
 	}
 	
 	
-//	@GetMapping("/allBooks")
-//	public List<Books> getallBooks(){
-//		return authorService.getallBooks();
-//		
-//	}
-//	
+
 //	@GetMapping("/getbook/{id}")
 //	public Optional<Books> getBook(@PathVariable Integer id){
 //		Optional<Books> book = authorService.getBook(id);
