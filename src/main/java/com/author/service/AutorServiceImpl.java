@@ -1,10 +1,15 @@
 package com.author.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.author.dto.AuthorDTO;
@@ -12,7 +17,7 @@ import com.author.entity.Author;
 
 import com.author.exception.ResourceNotFoundException;
 @Service
-public class AutorServiceImpl implements IAuthorService {
+public class AutorServiceImpl implements IAuthorService, UserDetailsService {
 	@Autowired
 	IAuthorRepository authorRepository;
 
@@ -43,50 +48,13 @@ public class AutorServiceImpl implements IAuthorService {
 		return false;
 	}
 
-//	@Override
-//	public List<Books> getallBooks() {
-//		
-//		return authorRepository.findAll();
-//	}
-//
-//	@Override
-//	public Optional<Books> getBook(Integer id) {
-//		// TODO Auto-generated method stub
-//		return authorRepository.findById(id);
-//	}
-//
-//	@Override
-//	public void deleteBook(Integer id) {
-//		authorRepository.deleteById(id);
-//		
-//	}
-//
-//	@Override
-//	public void deleteallBooks() {
-//		authorRepository.deleteAll();
-//		
-//	}
-//
-//	@Override
-//	public Books updateAuthor(Books book, Integer id) {
-//		// TODO Auto-generated method stub
-//		Books existingBook = authorRepository.findById(id).orElseThrow(
-//				()-> new ResourceNotFoundException("Employee", "id", id));
-//				
-//		existingBook.setAuthorUserName(book.getAuthorUserName());;
-//		existingBook.setActive(book.getActive());
-//		existingBook.setCategory(book.getCategory());
-//		existingBook.setContent(book.getContent());
-//		existingBook.setImage(book.getImage());
-//		existingBook.setPrice(book.getPrice());
-//		existingBook.setPublisher(book.getPublisher());
-//				
-//				//the details are updated and then saving the updated value
-//		authorRepository.save(existingBook);
-//		return existingBook;
-//	}
+	@Override
+	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+		
+		return  new User("admin","password", new ArrayList<>());
+	
+	}
 }
-
 	
 	
 		

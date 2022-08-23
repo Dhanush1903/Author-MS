@@ -65,39 +65,11 @@ public boolean login(@RequestBody AuthorDTO authorDTO) {
 		return authorDTO;
 	}
 	
-	
-
-//	@GetMapping("/getbook/{id}")
-//	public Optional<Books> getBook(@PathVariable Integer id){
-//		Optional<Books> book = authorService.getBook(id);
-//		return book;
-//	}
-//	
-//	@DeleteMapping("/book/{id}")
-//	public ResponseEntity<Books> deleteEmployee(@PathVariable Integer id){
-//		System.out.println(id);
-//		ResponseEntity<Books> responseEntity= new ResponseEntity<>(HttpStatus.OK);
-//		try {
-//			authorService.deleteBook(id);
-//		}
-//		catch (Exception e) {
-//			e.printStackTrace();
-//			responseEntity= new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//		}
-//		return  responseEntity;
-//	}
-//
-//	@DeleteMapping("/deleteall")
-//	public String deleteBooks(){
-//		authorService.deleteallBooks();
-//		return "Deleted all employees";
-//	}
-//	
-//	@PutMapping("/update/{id}")
-//	public ResponseEntity<Books> updateAuthor(@PathVariable("id") Integer id, @RequestBody Books book){
-//		return new ResponseEntity<Books>(authorService.updateAuthor(book, id), HttpStatus.OK);
-//	}
-//	
-	
+//	security
+	@GetMapping("/")
+	public String Homepage() {
+		return "Welcome User";
+		
+	}
 
 }
