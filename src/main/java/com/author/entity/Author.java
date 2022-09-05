@@ -1,27 +1,25 @@
 package com.author.entity;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+
+
 
 @Entity
 public class Author {
 
 	@Id
 	
-		private Integer aId;
+		private String email;
 		private String authorName;
 		private String password;
-		public Integer getaId() {
-			return aId;
+		public String getEmail() {
+			return email;
 		}
-		public void setaId(Integer aId) {
-			this.aId = aId;
+		public void setEmail(String email) {
+			this.email = email;
 		}
 		public String getAuthorName() {
 			return authorName;
@@ -35,16 +33,20 @@ public class Author {
 		public void setPassword(String password) {
 			this.password = password;
 		}
-		public Author(Integer aId, String authorName, String password) {
+		public Author(String email, String authorName, String password) {
 			super();
-			this.aId = aId;
+			this.email = email;
 			this.authorName = authorName;
 			this.password = password;
 		}
 		public Author() {
 			super();
 		}
-	
+		@Override
+		public String toString() {
+			return "Author [email=" + email + ", authorName=" + authorName + ", password=" + password + "]";
+		}
+		
 		
 
 		

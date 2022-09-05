@@ -23,10 +23,10 @@ public class AuthorMsApplication {
 	}
 	
 	
-	@Bean
-	public PasswordEncoder passwordEncoder () {
-		return NoOpPasswordEncoder.getInstance();
-		
-	}
+//	@Bean
+//	public PasswordEncoder passwordEncoder () {
+//		return NoOpPasswordEncoder.getInstance();
+//		
+//	}
 
 }

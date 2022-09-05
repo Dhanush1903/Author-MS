@@ -5,18 +5,18 @@ import java.util.List;
 import com.author.entity.Books;
 
 public class AuthorDTO {
-	private Integer aId;
+	private String email;
 	private String authorName;
 	private String password;
 
-	private List<Books> books; 
+	private List<Books> books;
 
-	public Integer getaId() {
-		return aId;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setaId(Integer aId) {
-		this.aId = aId;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getAuthorName() {
@@ -43,6 +43,22 @@ public class AuthorDTO {
 		this.books = books;
 	}
 
-	
-		
+	public AuthorDTO(String email, String authorName, String password, List<Books> books) {
+		super();
+		this.email = email;
+		this.authorName = authorName;
+		this.password = password;
+		this.books = books;
+	}
+
+	public AuthorDTO() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "AuthorDTO [email=" + email + ", authorName=" + authorName + ", password=" + password + ", books="
+				+ books + "]";
+	} 
+
 }

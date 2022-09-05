@@ -10,9 +10,9 @@ import com.author.entity.Author;
 
 public interface IAuthorService {
 
-	Integer saveAuthor(Author author);
+	String saveAuthor(Author author);
 
-	Author getbook(Integer aId);
+	Author getbook(String email);
 
 	boolean login(AuthorDTO authorDTO);
 

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +20,7 @@ import com.author.dto.AuthorDTO;
 import com.author.entity.Author;
 import com.author.entity.Books;
 import com.author.service.IAuthorService;
-
+@CrossOrigin
 @RestController
 public class AuthorController {
 	@Autowired
@@ -31,33 +32,35 @@ public class AuthorController {
 	
 //	create a new Author
 	@PostMapping("/author")
-	Integer createAuthor(@RequestBody Author author) {
-		Integer id= authorService.saveAuthor(author);
-		System.out.println(id);
-		return id;
+	String createAuthor( @RequestBody Author author) {
+		String email= authorService.saveAuthor(author);
+		System.out.println("**********************");
+		System.out.println(email);
+		return email;
 	}
 	
 //	Login
 	
 @PostMapping("/login")
 public boolean login(@RequestBody AuthorDTO authorDTO) {
-	authorDTO.getaId();authorDTO.getPassword();
+	authorDTO.getEmail();
+	authorDTO.getPassword();
 	return authorService.login(authorDTO);
 	
 }
 	
 	
-	@GetMapping("/{aId}")
-	public AuthorDTO getbook(@PathVariable("aId") Integer aId) {
-		Author author = this.authorService.getbook(aId);
+	@GetMapping("/{email}")
+	public AuthorDTO getbook(@PathVariable("email") String email) {
+		Author author = this.authorService.getbook(email);
 		
 		//http://localhost:8083/getbook/1
 		
-		List<Books> books = this.restTemplate.getForObject("http://localhost:8083/getbookbyaId/"+aId ,List.class);
+		List<Books> books = this.restTemplate.getForObject("http://localhost:8083/getbookbyemail/"+email ,List.class);
 	
 		
 		AuthorDTO authorDTO= new AuthorDTO();
-		authorDTO.setaId(author.getaId());
+		authorDTO.setEmail(author.getEmail());
 		authorDTO.setAuthorName(author.getAuthorName());
 		authorDTO.setPassword(author.getPassword());
 		authorDTO.setBooks(books);
@@ -66,10 +69,10 @@ public boolean login(@RequestBody AuthorDTO authorDTO) {
 	}
 	
 //	security
-	@GetMapping("/")
-	public String Homepage() {
-		return "Welcome User";
-		
-	}
+//	@GetMapping("/")
+//	public String Homepage() {
+//		return "Welcome User";
+//		
+//	}
 
 }
